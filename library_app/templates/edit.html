@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library_app/book-lib-style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="topnav">
+    <h1>Edit your entry...</h1>
+</div>
+    <table class="center">
+        <thead>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Year</th>
+            <th>ISBN</th>
+            <th>Page Count</th>
+            <th>Cover URL</th>
+            <th>Language</th>
+            <th><a href="/library_app/"><button class="button"><img src="{% static 'library_app/home_icon.png' %}"/></button></a></th>
+        </thead>
+        <tbody>
+            <tr class="user_inp">
+                <form method="POST" action="/library_app/save_changes/{{Book.id}}">
+                    {% csrf_token %}
+                    <td><input type="text" name="title" size="22" value="{{Book.title}}"></td>
+                    <td><input type="text" name="author" size="16" value="{{Book.author}}"></td>
+                    <td><input type="text" name="pub_year" maxlength="5" size="5" value="{{Book.pub_year}}"></td>
+                    <td><input type="text" name="isbn" maxlength="13" size="13" value="{{Book.isbn}}"></td>
+                    <td><input type="text" name="page_count" maxlength="6" size="6" value="{{Book.page_count}}"></td>
+                    <td><input type="text" name="cover_url" size="24" value="{{Book.cover_url}}"></td>
+                    <td><input type="text" name="lang" maxlength="2" size="2" value="{{Book.lang}}"></td>
+                    <td class="tbut">
+                    <button class="button"><img src="{% static 'library_app/confirm_icon.png' %}"/></button>
+                </form>
+                    <a href="/library_app/delete/{{Book.id}}"><button class="button"><img src="{% static 'library_app/bin_icon.png' %}"/></button></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library_app/book-lib-style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="topnav">
+    <form method="get">
+        <input type="text" placeholder="Search.." name="keywords">
+    </form>
+    <h1>... and save them to the library! </h1>
+</div>
+<table class="center">
+    <thead>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publication Year</th>
+        <th>ISBN</th>
+        <th>Page Count</th>
+        <th>Cover URL</th>
+        <th>Language</th>
+        <th><a href="/library_app/"><button class="button"><img src="{% static 'library_app/home_icon.png' %}"/></button></a></th>
+
+    </thead>
+    <tbody>
+        {% if response %}
+            {% for i in response %}
+            <form method="POST" action="/library_app/add_new/">
+                {% csrf_token %}
+                <tr>
+                    <td><input type="hidden" name="title" value="{{i.title}}">{{i.title}}</td>
+                    <td><input type="hidden" name="author" value="{{i.author}}">{{ i.author }}</td>
+                    <td><input type="hidden" name="pub_year" value="{{i.pub_year}}">{{ i.pub_year }}</td>
+                    <td><input type="hidden" name="isbn" value="{{i.isbn}}">{{ i.isbn }}</td>
+                    <td><input type="hidden" name="page_count" value="{{i.page_count}}">{{ i.page_count }}</td>
+                    <td><input type="hidden" name="cover_url" value="{{i.cover_url}}">{{ i.cover_url }}</td>
+                    <td><input type="hidden" name="lang" value="{{i.lang}}">{{ i.lang }}</td>
+                    <td class="tbut">
+                        <td class="tbut">
+                            <button class="button"><img src="{% static 'library_app/save_icon.png' %}"/></button>
+                        </td>
+                    </td>
+                </tr>
+            </form>
+            {% endfor %}
+        {% else %}
+        <p><center>Enter keyword</center></p>
+        {% endif %}
+    </tbody>
+</table>
+</body>
+</html>

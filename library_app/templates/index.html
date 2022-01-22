@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library_app/book-lib-style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="topnav">
+    <form>
+        <input type="text" placeholder="Search.." name="search_input">
+    </form>
+</div>
+<table class="center">
+    <thead>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publication Year</th>
+        <th>ISBN</th>
+        <th>Page Count</th>
+        <th>Cover URL</th>
+        <th>Language</th>
+        <th><a href="/library_app/add_new"><button class="button"><img src="{% static 'library_app/add-new_icon.png' %}"/></button></a></th>
+
+    </thead>
+    <tbody>
+        {% if book_list %}
+            {% for book in book_list %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.pub_year }}</td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.page_count }}</td>
+                <td>{{ book.cover_url }}</td>
+                <td>{{ book.lang }}</td>
+                <td class="tbut">
+                    <script>
+                        var stat = "{% static 'library_app/menu_icon.png' %}"
+                        document.write('<a href="edit/'+ '{{ book.id }}' + '"><button class="button"><img src="'+ stat + '"/></button></a>');
+                    </script>
+                </td>
+            </tr>
+            {% endfor %}
+        {% else %}
+        <center><h1>There are no books in the library yet...</h1></center>
+        {% endif %}
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library_app/book-lib-style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+    <div class="topnav">
+        <form method="get" action="/library_app/api">
+            <input type="text" placeholder="Search in Google Books with keywords" name="keywords">
+        </form>
+            <h1>... or add them manually </h1>
+    </div>
+    <table class="center">
+        <thead>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Year</th>
+            <th>ISBN</th>
+            <th>Page Count</th>
+            <th>Cover URL</th>
+            <th>Language</th>
+            <th><a href="/library_app/"><button class="button"><img src="{% static 'library_app/home_icon.png' %}"/></button></a></th>
+        </thead>
+        <tbody>
+            <form method="POST">
+                {% csrf_token %}
+                <tr class="user_inp">
+                    {% for field in form %}
+                        <td>{{ field }}</td>
+                    {% endfor %}
+                    <td class="tbut">
+                        <a href="/library_app/"><input type='image' class="button" src="{% static 'library_app/save_icon.png' %}" value='add_new'/></a>
+                    </td>
+                </tr>
+            </form>
+        </tbody>
+    </table>
+    </body>
+</body>
+</body>
+</html>

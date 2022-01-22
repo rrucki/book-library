@@ -1,0 +1,113 @@
+div {
+    border-radius: 5px;
+    margin: auto;
+    max-width: 1000px;
+    padding: 100px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+  }
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #DDDDDD;
+    display: inline-block;
+    font-size: 40px;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #DDDDDD;
+    display: inline-block;
+    font-size: 30px;
+}
+
+.topnav input[type=text] {
+    color: #616161;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    box-sizing: border-box;
+    font-size: 40px;
+}
+.topnav input[type=text]:hover {
+    border: 1px solid #c1c1c1;
+}
+
+::placeholder {
+    color: #DDDDDD;
+}
+
+.user_inp input[type=text] {
+    color: #616161;
+    padding: 6px 10px;
+    display: inline-block;
+    border: 1px solid #e4e4e4;
+    border-radius: 16px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+.userinp input[type=text]:hover {
+    border: 1px solid #000000;
+}
+
+::placeholder {
+    color: #DDDDDD;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table.center {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th, td {
+    padding: 20px;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    text-align: left;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.tbut {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+tbody > tr:hover {
+    background-color: #fcfcfc;
+}
+
+.button {
+    opacity: 20%;
+    background-color: transparent;
+    border: none
+}
+
+.ebutton {
+    opacity: 20%;
+    background-color: transparent;
+    border: 1px #000000;
+}
+
+.button:hover {
+    opacity: 60%;
+}
+
+.button:active {
+    opacity: 100%;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #DDDDDD;
+    font-size: 12px;
+}
